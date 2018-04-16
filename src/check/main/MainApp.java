@@ -1,6 +1,6 @@
-package unicool.main;
+package check.main;
 
-import unicool.main.MainApp;
+import check.main.MainApp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -27,7 +27,7 @@ public class MainApp extends Application {
 			
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
-			primaryStage.setMaximized(true);
+			//primaryStage.setMaximized(true);
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

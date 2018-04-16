@@ -1,29 +1,26 @@
-package unicool.main.view;
-
-import unicool.main.MainApp;
+package check.main.view;
 
 import java.util.*;
 
+import check.main.MainApp;
+import check.main.Rxtx;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class RootController {
+	Rxtx myRxtx;
 	
 	@FXML
 	private MainApp mainApp;
 	@FXML
-	private Label daytimeLabel;
+	private Label daytimeLabel, rfCardNum;
 	
 	@FXML
 	private void initialize() {
 		handleBtnStart();
-		try {
-			new Serial().connect("COM1");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		myRxtx = new Rxtx();
+		myRxtx.initialize();
 	}
 	public void handleBtnStart() {
         Thread thread = new Thread() {
@@ -39,6 +36,7 @@ public class RootController {
         			cal.get(Calendar.SECOND)+"초";
 	                Platform.runLater(() -> {
 	                	daytimeLabel.setText(now);
+	                	rfCardNum.setText(myRxtx.GetCard());
 	                	});
 	                try {
 	                	Thread.sleep(100);
